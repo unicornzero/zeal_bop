@@ -47,5 +47,14 @@ end
 
 gem 'rails_12factor', group: :production
 gem 'puma'
+gem 'devise'
+gem 'foreman'
 
 ruby "2.3.0"
+
+gem 'omniauth'
+gem 'omniauth-oauth2', '1.3.1'
+gem 'omniauth-github'
+gem 'omniauth-twitter'
+gem 'omniauth-trello'
+gem 'omniauth-google-oauth2'

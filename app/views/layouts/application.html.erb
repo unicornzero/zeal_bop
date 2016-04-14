@@ -7,6 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <p class="notice"><b><%= notice %></p>
+  <p class="alert"><%= alert %></p></b>
+
+  <% if user_signed_in? %>
+    <p>
+      Logged in as: <%= current_user.email %>
+      | <%= link_to 'Edit account', edit_user_registration_path %>
+      | <%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %>
+    </p>
+    <p>
+      <%= link_to 'Connect Twitter', user_omniauth_authorize_path(:twitter) %>
+      | <%= link_to 'Connect Trello', user_omniauth_authorize_path(:trello) %>
+      | <%= link_to 'Connect Google', user_omniauth_authorize_path(:google_oauth2) %>
+      | <%= link_to 'Connect GitHub', user_omniauth_authorize_path(:github) %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to 'Log In', new_user_session_path %>
+      | <%= link_to 'Sign Up', new_user_registration_path %>
+    </p>
+  <% end %>
 
 <%= yield %>
 

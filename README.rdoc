@@ -1,28 +1,22 @@
-== README
+## README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a hackathon app to play with Ruby 2.3, Rails 4, Heroku, New Relic, and User mapping patterns.
 
-Things you may want to cover:
+### Development Environment
+Ruby and Bundler must be installed. `.env.sample` must be copied to `.env` and your app's env vars should be set.
 
-* Ruby version
+### Heroku Production Environment
+You will need a Heroku account, the heroku toolbelt installed, and to refer to [Heroku documentation](https://devcenter.heroku.com/articles/getting-started-with-rails5) to deploy the app to your own account.
+Refer to
+Env vars need to be set in Heroku. Example command: `$ heroku config:set NEW_RELIC_KEY=abc123`.
 
+
+<!-- * Ruby version
 * System dependencies
-
 * Configuration
-
 * Database creation
-
 * Database initialization
-
 * How to run the test suite
-
 * Services (job queues, cache servers, search engines, etc.)
-
 * Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* ... -->
