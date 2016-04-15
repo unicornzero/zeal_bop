@@ -2,3 +2,10 @@
 <p>
   Your account is connected to: <%= @app_providers %>
 </p>
+
+<% if @app_providers.keys.include?("github") %>
+  <h3>GitHub</h3>
+  <p>
+    Your repo names are: <%= @repo_names %>
+  </p>
+<% end %>
