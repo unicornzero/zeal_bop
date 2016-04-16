@@ -10,6 +10,15 @@ You will need a Heroku account, the heroku toolbelt installed, and to refer to [
 Refer to
 Env vars need to be set in Heroku. Example command: `$ heroku config:set NEW_RELIC_KEY=abc123`.
 
+Setup Agile Central credentials [here](https://rally1.rallydev.com/login/accounts/index.html#/clients)
+[Twitter app setup](https://apps.twitter.com/)
+[Trello app setup](https://trello.com/app-key)
+Example of a CAAC Callback Url:
+https://test1234.ngrok.io/users/auth/agile_central/callback
+https://intense-tundra-1234.herokuapp.com/users/auth/agile_central/callback
+
+Dev notes:
+Deleting sessions in Rails: `rake db:sessions:clear`
 
 <!-- * Ruby version
 * System dependencies

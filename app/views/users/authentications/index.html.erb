@@ -1,11 +1,36 @@
 <h2>Your Connected Applications</h2>
 <p>
-  Your account is connected to: <%= @app_providers %>
+  Your account is connected to: <%= @app_providers.keys %>
 </p>
 
 <% if @app_providers.keys.include?("github") %>
   <h3>GitHub</h3>
+    <p>
+      Your GitHub username:<br>
+      <%= @gh_username %>
+    </p>
   <p>
-    Your repo names are: <%= @repo_names %>
+    Your GitHub repo names are:<br>
+    <ul>
+      <% @repo_names.each do |repo| %>
+        <li><%= repo %></li>
+      <% end %>
+    </ul>
   </p>
+<% end %>
+
+<% if @app_providers.keys.include?("agile_central") %>
+    <h3>CA Agile Central</h3>
+    <p>
+      Your CA Agile Central username:<br>
+      <%= @ac_username %>
+    </p>
+    <p>
+      Your CA Agile Central projects:<br>
+      <ul>
+        <% @ac_proj_names.each do |proj| %>
+            <li><%= proj %></li>
+        <% end %>
+      </ul>
+    </p>
 <% end %>

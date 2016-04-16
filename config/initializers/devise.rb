@@ -1,3 +1,5 @@
+require 'omniauth-agile_central'
+
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -243,6 +245,7 @@ Devise.setup do |config|
   config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET']
   config.omniauth :trello, ENV['TRELLO_KEY'], ENV['TRELLO_SECRET']
   config.omniauth :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET']
+  config.omniauth :agile_central, ENV['AGILE_CENTRAL_KEY'], ENV['AGILE_CENTRAL_SECRET']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

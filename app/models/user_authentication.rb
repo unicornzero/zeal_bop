@@ -28,4 +28,8 @@ class UserAuthentication < ActiveRecord::Base
         params: params,
     )
   end
+
+  def provider
+    self.authentication_provider.name
+  end
 end

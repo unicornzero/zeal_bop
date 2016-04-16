@@ -1,6 +1,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def connect
+    p "connect"
     create if !current_user
     auth_params = request.env["omniauth.auth"]
     provider = AuthenticationProvider.where(name: auth_params.provider).first
@@ -19,6 +20,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   alias twitter connect
   alias trello connect
   alias google_oauth2 connect
+  alias agile_central connect
 
   private
 
