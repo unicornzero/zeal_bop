@@ -1,5 +1,7 @@
-<h2>Log in</h2>
-
+<main class="demo-main mdl-layout__content">
+  <div class="demo-container mdl-grid">
+    <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+<section><h2>Log in</h2>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -22,5 +24,10 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
+<br>
+  <%= render "devise/shared/links" %></section>
 
-<%= render "devise/shared/links" %>
+
+    </div>
+  </div>
+</div>

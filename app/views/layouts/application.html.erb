@@ -3,11 +3,9 @@
 <head>
   <title>ZealBop</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-</head>
-<body>
-
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -18,34 +16,58 @@
     ga('send', 'pageview');
 
   </script>
+</head>
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
 
-  <p class="notice"><b><%= notice %></p>
-  <p class="alert"><%= alert %></p></b>
+<p class="notice"><b><%= notice %></p>
+<p class="alert"><%= alert %></p></b>
 
-  <% if user_signed_in? %>
-    <p>
-      Logged in as: <%= current_user.email %>
-      | <%= link_to 'Edit account', edit_user_registration_path %>
-      | <%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %>
-    </p>
-    <p>
-      <b><%= link_to 'Your Connected Apps', apps_path %></b>
-    </p>
-    <p>
-      <%= link_to 'Connect Agile Central', user_omniauth_authorize_path(:agile_central) %>
-      | <%= link_to 'Connect Twitter', user_omniauth_authorize_path(:twitter) %>
-      | <%= link_to 'Connect Trello', user_omniauth_authorize_path(:trello) %>
-      | <%= link_to 'Connect Google', user_omniauth_authorize_path(:google_oauth2) %>
-      | <%= link_to 'Connect GitHub', user_omniauth_authorize_path(:github) %>
-    </p>
-  <% else %>
-    <p>
-      <%= link_to 'Log In', new_user_session_path %>
-      | <%= link_to 'Sign Up', new_user_registration_path %>
-    </p>
-  <% end %>
+<header class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
 
-<%= yield %>
+    <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color--primary">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title">GSD</span>
+
+        <div class="mdl-layout-spacer"></div>
+        <% if user_signed_in? %>
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+            <i class="material-icons">dashboard</i>
+          </button>
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+            <i class="material-icons">forum</i>
+          </button>
+          <button id="demo-menu-lower-right"
+                  class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">person</i>
+          </button>
+          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+              for="demo-menu-lower-right">
+            <li disabled class="mdl-menu__item"><i class="material-icons">person</i><%= current_user.email %></li>
+            <li><a class="mdl-menu__item"'<%= apps_url %>'>Connect Apps</a></li>
+            <li><a class="mdl-menu__item" href='<%= edit_user_registration_path %>'>Edit Account</a></li>
+            <li><a class="mdl-menu__item" href='<%= destroy_user_session_path %>' data-method="delete">Sign Out</a></li>
+          </ul>
+        <% else %>
+            <span><a class="mdl-layout__tab" href='<%= new_user_session_path %>'>Log In</a></span>
+            <span><a class="mdl-layout__tab" href='<%= new_user_registration_path %>'>Sign Up</a></span>
+
+      <% end %>
+      </div>
+    </header>
+  </header>
+
+  <main class="mdl-layout__content mdl-color--grey-100">
+    <div class="mdl-grid demo-content">
+      <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+
+
+
+    <%= yield %>
+
+    </div>
+  </div>
+</main>
 
 </body>
 </html>

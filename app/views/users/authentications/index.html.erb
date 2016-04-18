@@ -1,36 +1,123 @@
-<h2>Your Connected Applications</h2>
-<p>
-  Your account is connected to: <%= @app_providers.keys %>
-</p>
-
-<% if @app_providers.keys.include?("github") %>
-  <h3>GitHub</h3>
-    <p>
-      Your GitHub username:<br>
-      <%= @gh_username %>
-    </p>
-  <p>
-    Your GitHub repo names are:<br>
-    <ul>
-      <% @repo_names.each do |repo| %>
-        <li><%= repo %></li>
-      <% end %>
-    </ul>
-  </p>
-<% end %>
-
-<% if @app_providers.keys.include?("agile_central") %>
-    <h3>CA Agile Central</h3>
-    <p>
-      Your CA Agile Central username:<br>
-      <%= @ac_username %>
-    </p>
-    <p>
-      Your CA Agile Central projects:<br>
-      <ul>
-        <% @ac_proj_names.each do |proj| %>
-            <li><%= proj %></li>
-        <% end %>
+<main class="demo-main mdl-layout__content">
+  <div class="demo-container mdl-grid">
+    <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+    <h2>Your Connected Applications</h2>
+    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+      <div class="mdl-card mdl-cell mdl-cell--12-col">
+        <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+          <h4 class="mdl-cell mdl-cell--12-col">Available Apps</h4>
+          <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+            <div class="section__circle-container__circle mdl-color--primary"></div>
+          </div>
+          <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+            <h5>CA Agile Central</h5>
+            Create a dashboard to connect with your CA Agile Central projects and invite youre CA Agile Central team!
+            <%= link_to 'Connect Agile Central', user_omniauth_authorize_path(:agile_central) %>
+          </div>
+          <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+            <div class="section__circle-container__circle mdl-color--primary"></div>
+          </div>
+          <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+            <h5>GitHub</h5>
+            Enable GitHub notifications in your project dashboards.
+            <%= link_to 'Connect GitHub', user_omniauth_authorize_path(:github) %>
+          </div>
+          <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+            <div class="section__circle-container__circle mdl-color--primary"></div>
+          </div>
+          <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+            <h5>Twitter</h5>
+            Connect all-the-things! <%= link_to 'Connect Twitter', user_omniauth_authorize_path(:twitter) %>
+          </div>
+          <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+            <div class="section__circle-container__circle mdl-color--primary"></div>
+          </div>
+          <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+            <h5>Trello</h5>
+            Connect all-the-things! <%= link_to 'Connect Trello', user_omniauth_authorize_path(:trello) %>
+          </div>
+        </div>
+      </div>
+      <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn2">
+        <i class="material-icons">more_vert</i>
+      </button>
+      <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn2">
+        <li class="mdl-menu__item">Lorem</li>
+        <li class="mdl-menu__item" disabled>Ipsum</li>
+        <li class="mdl-menu__item">Dolor</li>
       </ul>
-    </p>
-<% end %>
+    </section>
+
+    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+
+      <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text">Your Apps</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+          <% if @app_providers.keys.count < 1 %>
+            <p>"No applications have been connected"<p>
+          <% else %>
+            <ul>
+              <% @app_providers.keys.each do |app| %>
+                  <li><%= app.camelize %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+    </section>
+
+
+    <% if @app_providers.keys.include?("github") %>
+      <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+          <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">GitHub</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            <p>
+              Your GitHub username:<br>
+              <%= @gh_username %>
+            </p>
+            <p>
+              Your GitHub repo names are:<br>
+              <ul>
+                <% @repo_names.each do |repo| %>
+                    <li><%= repo %></li>
+                <% end %>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </section>
+    <% end %>
+
+    <% if @app_providers.keys.include?("agile_central") %>
+      <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+          <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">CA Agile Central</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+          <p>
+            Your CA Agile Central username:<br>
+            <%= @ac_username %>
+          </p>
+          <p>
+            Your CA Agile Central projects:<br>
+            <ul>
+              <% @ac_proj_names.each do |proj| %>
+                  <li><%= proj %></li>
+              <% end %>
+            </ul>
+          </p>
+          </div>
+        </div>
+      </section>
+    <% end %>
+
+  </div>
+</div>
